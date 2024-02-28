@@ -17,6 +17,6 @@ use App\Http\Controllers\HomeController;
 
 
 Route::get('/',HomeController::class);
-Route::get('cursos',[CursosController::class, 'index']);
-Route::get('cursos/create',[CursosController::class, 'create']);
-Route::get('cursos/{curso}',[CursosController::class, 'show']);
+Route::get('cursos',[CursosController::class, 'index'])->name('index');
+Route::get('cursos/create',[CursosController::class, 'create'])->name('create');
+Route::get('cursos/{curso}',[CursosController::class, 'show'])->name('modfificar');
