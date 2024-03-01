@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCurso_Request;
 use Illuminate\Http\Request;
 use App\Models\Curso;
 class CursosController extends Controller
@@ -17,19 +18,16 @@ class CursosController extends Controller
   public function create(){
     return view("cursos.create"); 
   }
-  public function store(Request $request){
+  public function store(StoreCurso_Request $request){
 
-    $request->validate([
-      'name'=>'required | min:3',
-      'descripcion'=>'required',
-      'categoria'=>'required'
-    ]); 
 
-    $curso = new Curso(); 
-    $curso->name = $request->name; 
-    $curso->descripcion = $request->descripcion; 
-    $curso->categoria = $request->categoria;    
-    $curso->save(); 
+    // $curso = new Curso(); 
+    // $curso->name = $request->name; 
+    // $curso->descripcion = $request->descripcion; 
+    // $curso->categoria = $request->categoria;    
+    // $curso->save(); 
+
+    $curso = Curso::create($request->all()); 
     return redirect()->route('cursos.show', $curso->id);
   }
 
@@ -44,10 +42,18 @@ class CursosController extends Controller
   }
 
   public function update(Request $request, Curso $curso){
-    $curso->name = $request->name; 
-    $curso->descripcion = $request->descripcion; 
-    $curso->categoria = $request->categoria; 
-    $curso->save(); 
+
+    $request->validate([
+      'name'=>'required | min:3',
+      'descripcion'=>'required',
+      'categoria'=>'required'
+    ]); 
+    
+    // $curso->name = $request->name; 
+    // $curso->descripcion = $request->descripcion; 
+    // $curso->categoria = $request->categoria; 
+    // $curso->save(); 
+    $curso->update($request->all());
     return redirect()->route('cursos.show', $curso->id);
   }
 }

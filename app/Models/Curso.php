@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Curso extends Model
 {
     use HasFactory;
+
+    // protected $filable = ['name', 'descripcion', 'categoria'];
+    protected $guarded = [];  // lo dejamos vacio porque no tenemos un campo protegido 
 }

@@ -13,7 +13,7 @@
         <table>
             <tr>
                 <td>NOMBRE</td>
-                <td><input type="text" name="name" value="{{ $curso->name }}" >
+                <td><input type="text" name="name" value="{{ old('name',$curso->name) }}" >
                     @error('name')
                         <span>* {{ $message }}</span>
                     @enderror
@@ -23,7 +23,7 @@
             <tr>
                 <td>DESCRIPCION</td>
                 <td>
-                    <textarea name="descripcion" rows="5">{{ $curso->descripcion }}</textarea>
+                    <textarea name="descripcion" rows="5">{{old('descripcion', $curso->descripcion )}}</textarea>
                     @error('descripcion')
                         <span>* {{ $message }}</span>
                     @enderror
@@ -31,7 +31,7 @@
             </tr>
             <tr>
                 <td>CATEGORIA</td>
-                <td><input type="text" name="categoria" value="{{ $curso->categoria }}">
+                <td><input type="text" name="categoria" value="{{ old('categoria',$curso->categoria) }}">
                     @error('categoria')
                         <span>* {{ $message }}</span>
                     @enderror
