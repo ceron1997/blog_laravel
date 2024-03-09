@@ -31,8 +31,8 @@ class CursosController extends Controller
     return redirect()->route('cursos.show', $curso->id);
   }
 
-  public function show($id){
-    $curso = Curso::find($id);
+  public function show(Curso $curso){
+    // {curso:$curso}
      return view("cursos.show", compact('curso')); 
   }
   public function edit(Curso $curso){
@@ -45,6 +45,7 @@ class CursosController extends Controller
 
     $request->validate([
       'name'=>'required | min:3',
+      'slug'=>'required | unique:cursos,slug,'.$curso->id,
       'descripcion'=>'required',
       'categoria'=>'required'
     ]); 
@@ -54,6 +55,12 @@ class CursosController extends Controller
     // $curso->categoria = $request->categoria; 
     // $curso->save(); 
     $curso->update($request->all());
-    return redirect()->route('cursos.show', $curso->id);
+    return redirect()->route('cursos.show', $curso);
+  }
+
+  public function destroy(Curso $curso){
+  
+     $curso->delete(); 
+    return  redirect()->route('cursos.index'); 
   }
 }

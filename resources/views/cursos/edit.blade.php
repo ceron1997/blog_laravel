@@ -21,6 +21,13 @@
 
             </tr>
             <tr>
+                <td>SLUG</td>
+                <td><input type="text" name="slug" value="{{old('slug', $curso->slug)}}">
+                    @error('slug')
+                    <span>* {{ $message }}</span>
+                @enderror </td>
+            </tr>
+            <tr>
                 <td>DESCRIPCION</td>
                 <td>
                     <textarea name="descripcion" rows="5">{{old('descripcion', $curso->descripcion )}}</textarea>

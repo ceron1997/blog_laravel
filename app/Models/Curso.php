@@ -11,4 +11,8 @@ class Curso extends Model
 
     // protected $filable = ['name', 'descripcion', 'categoria'];
     protected $guarded = [];  // lo dejamos vacio porque no tenemos un campo protegido 
+
+   public function getRouteKeyName(){
+        return 'slug'; 
+   }
 }

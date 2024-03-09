@@ -18,6 +18,13 @@
                 @enderror </td>
             </tr>
             <tr>
+                <td>SLUG</td>
+                <td><input type="text" name="slug" value="{{old('slug')}}">
+                    @error('slug')
+                    <span  class="text-red-600" >* {{ $message }}</span>
+                @enderror </td>
+            </tr>
+            <tr>
                 <td>DESCRIPCION</td>
                 <td>
                     <textarea name="descripcion" rows="5">{{old('descripcion')}}</textarea>
